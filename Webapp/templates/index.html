@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<!-- Upload Section -->
+<div class="container-upload">
+    <br />
+    <h2>Upload Your Image</h2>
+    <form action="/" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+            <input type="file" class="form-control" name="file" required />  <!-- Chỉnh lại tên thành 'file' -->
+        </div>
+        <button style="background-color: #ffc2d1; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px; cursor: pointer;" type="submit" class="btn btn-primary">
+            Upload
+        </button>
+    </form>
+</div>
+{% if upload %}
+<div class="container" style="margin-top: 30px; text-align: center; font-family: 'Poppins', sans-serif;">
+    <div style="display: inline-block; padding: 20px; border: 2px solid #FF69B4; border-radius: 15px; background-color: #FFF0F5; box-shadow: 0 4px 8px rgba(255, 105, 180, 0.3);">
+        <h2 style="color: #FF69B4; font-weight: bold; font-size: 24px; text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.5); margin: 0;">
+            Result of detected emotion
+        </h2>
+    </div>
+    <h2 style="color: #E75480; font-weight: bold ; font-size: 27px; text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.6); font-family: 'Georgia', serif; margin-top: 20px;">
+        {{ emotion }}
+    </h2>
+    <img style="margin-top: 50px;" src="{{ url_for('static', filename = image_url) }}" alt="Uploaded Image">
+    <div style="margin-top: 50px; padding: 15px; border: 2px dashed #FF69B4; border-radius: 10px; background-color: #FFF0F5;">
+        <p style="color: #555; font-size: 20px; font-family: 'Merriweather', serif;">
+            Wishing you a wonderful day ahead, full of smiles and positivity! 🌸
+        </p>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
